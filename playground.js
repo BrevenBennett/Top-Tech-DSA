@@ -1,12 +1,22 @@
-const nums = [1, 2, 4, 9]
-const target = 13
+class Node {
+  constructor(val, next) {
+    this.val = val;
+    this.next = next;
+  }
 
-const map = new Map();
+  print() {
+    let length = 0;
+    let curr = this;
 
-for (let i = 0; i < nums.length; ++i) {
-  map.set(nums[i], true)
+    while (curr) {
+      length++;
+      curr = curr.next;
+    }
 
-  if (nums[i] === 9) {
-    console.log(map.get(4)) // O(1) time
+    console.log(length);
   }
 }
+
+const head = new Node(1, new Node(2, new Node(3, new Node(4, new Node(4567, null)))));
+
+head.print()
