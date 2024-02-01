@@ -22,16 +22,18 @@ B.right = E;
 C.left = F;
 
 function tester(root) {
-  const set = new Set();
-  let curr = head;
+  const stack = [root];
+  const results = [];
 
-  while (curr) {
-    if (set.has(curr)) return true;
-    set.add(curr);
-    curr = curr.next;
+  while (stack.length > 0) {
+    const current = stack.pop();
+    results.push(current.val);
+
+    if (current.right) stack.push(current.right);
+    if (current.left) stack.push(current.left);
   }
 
-  return false;
+  return results;
 }
 
 test(" ", () => {
