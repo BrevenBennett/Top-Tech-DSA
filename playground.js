@@ -21,19 +21,17 @@ B.right = E;
 C.left = F;
 C.right = G;
 
-const search = (root, target) => {
-  const stack = [root];
+const invertTree = (root) => {
+  if (!root) return null;
 
-  while (stack.length > 0) {
-    const current = stack.pop();
+  let temp = root.left;
+  root.left = root.right;
+  root.right = temp;
 
-    if (current.val === target) return true
+  invertTree(root.left);
+  invertTree(root.right);
 
-    if (current.left) stack.push(current.left);
-    if (current.right) stack.push(current.right);
-  }
-
-  return false;
+  return root;
 };
 
-console.log(search(A, "f"))
+console.log(invertTree(A));
