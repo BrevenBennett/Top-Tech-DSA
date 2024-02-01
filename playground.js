@@ -6,13 +6,13 @@ class Node {
   }
 }
 
-const A = new Node(1);
-const B = new Node(2);
-const C = new Node(3);
-const D = new Node(4);
-const E = new Node(5);
-const F = new Node(6);
-const G = new Node(7);
+const A = new Node("A");
+const B = new Node("B");
+const C = new Node("C");
+const D = new Node("D");
+const E = new Node("E");
+const F = new Node("F");
+const G = new Node("G");
 
 A.left = B;
 A.right = C;
@@ -21,20 +21,19 @@ B.right = E;
 C.left = F;
 C.right = G;
 
-const sumOfTree = (root) => {
-  const queue = [root];
-  let sum = 0;
+const search = (root, target) => {
+  const stack = [root];
 
-  while (queue.length > 0) {
-    const current = queue.shift();
+  while (stack.length > 0) {
+    const current = stack.pop();
 
-    sum += current.val;
+    if (current.val === target) return true
 
-    if (current.left !== null) queue.push(current.left);
-    if (current.right !== null) queue.push(current.right);
+    if (current.left) stack.push(current.left);
+    if (current.right) stack.push(current.right);
   }
 
-  return sum;
+  return false;
 };
 
-console.log(sumOfTree(A))
+console.log(search(A, "f"))
