@@ -12,11 +12,13 @@ const c = new Node("C");
 const d = new Node("D");
 const e = new Node("E");
 const f = new Node("F");
+const g = new Node("G");
 
 a.left = b;
 a.right = c;
 b.right = d;
 b.left = e;
 c.left = f;
+c.right = g;
 
-console.log(a.right.val);
+console.log(a);
